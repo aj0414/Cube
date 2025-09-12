@@ -40,7 +40,6 @@
 
         if (!__cubeShown) return;
 
-        // Adjusted cube coordinates for smaller canvas
         // Lower diamond
         ctx.beginPath();
         ctx.moveTo(200, 180); // Top point (centered)
@@ -77,7 +76,7 @@
       }
 
       window.toggleDiamonds = function () {
-        __cubeShown = !__cubeShown; // <-- fix: toggle properly
+        __cubeShown = !__cubeShown;
         draw();
         return __cubeShown;
       };
