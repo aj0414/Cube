@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Diamond</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background: #f5f5f5;
+      }
+      canvas {
+        border: 2px dashed #000;
+        margin-top: 10px;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <button id="toggleBtn">Generate Cube</button>
+
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      // Toggle state and draw function
+      let __cubeShown = false;
+
+      function draw() {
+        ctx.clearRect(0, 0, 400, 400);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, 400, 400);
+
+        if (!__cubeShown) return;
+
+        // Adjusted cube coordinates for smaller canvas
+        // Lower diamond
+        ctx.beginPath();
+        ctx.moveTo(200, 180); // Top point (centered)
+        ctx.lineTo(260, 210); // Right point
+        ctx.lineTo(200, 240); // Bottom point
+        ctx.lineTo(140, 210); // Left point
+        ctx.closePath();
+        ctx.stroke();
+
+        // Connector lines
+        ctx.beginPath();
+        ctx.moveTo(140, 140);
+        ctx.lineTo(140, 210);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(200, 110);
+        ctx.lineTo(200, 240);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(260, 140);
+        ctx.lineTo(260, 210);
+        ctx.stroke();
+
+        // Upper diamond
+        ctx.beginPath();
+        ctx.moveTo(200, 110); // Top point
+        ctx.lineTo(260, 140); // Right point
+        ctx.lineTo(200, 170); // Bottom point
+        ctx.lineTo(140, 140); // Left point
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+      window.toggleDiamonds = function () {
+        __cubeShown = !__cubeShown; // <-- fix: toggle properly
+        draw();
+        return __cubeShown;
+      };
+
+      document.getElementById("toggleBtn").onclick = function () {
+        const isShown = window.toggleDiamonds();
+        this.textContent = isShown ? "Hide Cube" : "Show Cube";
+      };
+
+      draw();
+    </script>
+  </body>
+</html>
