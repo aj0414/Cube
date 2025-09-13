@@ -49,6 +49,16 @@
         ctx.closePath();
         ctx.stroke();
 
+ // Upper diamond
+        ctx.beginPath();
+        ctx.moveTo(250, 160); // Top point
+        ctx.lineTo(300, 185); // Right point
+        ctx.lineTo(250, 210); // Bottom point
+        ctx.lineTo(200, 185); // Left point
+        ctx.closePath();
+        ctx.stroke();
+      }
+
         // Connector lines
         ctx.beginPath();
         ctx.moveTo(200, 185);
@@ -65,15 +75,7 @@
         ctx.lineTo(300, 250);
         ctx.stroke();
 
-        // Upper diamond
-        ctx.beginPath();
-        ctx.moveTo(250, 160); // Top point
-        ctx.lineTo(300, 185); // Right point
-        ctx.lineTo(250, 210); // Bottom point
-        ctx.lineTo(200, 185); // Left point
-        ctx.closePath();
-        ctx.stroke();
-      }
+       
 
       window.toggleDiamonds = function () {
         __cubeShown = !__cubeShown; // <-- fix: toggle properly
