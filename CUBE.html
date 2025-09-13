@@ -23,7 +23,7 @@
     </style>
   </head>
   <body>
-    <canvas id="canvas" width="400" height="400"></canvas>
+    <canvas id="canvas" width="500" height="500"></canvas>
     <button id="toggleBtn">Generate Cube</button>
 
     <script>
@@ -34,49 +34,49 @@
       let __cubeShown = false;
 
       function draw() {
-        ctx.clearRect(0, 0, 400, 400);
+        ctx.clearRect(0, 0, 500, 500);
         ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, 400, 400);
+        ctx.fillRect(0, 0, 500, 500);
 
         if (!__cubeShown) return;
 
         // Lower diamond
         ctx.beginPath();
-        ctx.moveTo(200, 180); // Top point (centered)
-        ctx.lineTo(260, 210); // Right point
-        ctx.lineTo(200, 240); // Bottom point
-        ctx.lineTo(140, 210); // Left point
+        ctx.moveTo(250, 225); // Top point (centered)
+        ctx.lineTo(300, 250); // Right point
+        ctx.lineTo(250, 275); // Bottom point
+        ctx.lineTo(200, 250); // Left point
         ctx.closePath();
         ctx.stroke();
 
         // Connector lines
         ctx.beginPath();
-        ctx.moveTo(140, 140);
-        ctx.lineTo(140, 210);
+        ctx.moveTo(200, 185);
+        ctx.lineTo(200, 250);
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.moveTo(200, 110);
-        ctx.lineTo(200, 240);
+        ctx.moveTo(250, 160);
+        ctx.lineTo(250, 275);
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.moveTo(260, 140);
-        ctx.lineTo(260, 210);
+        ctx.moveTo(300, 185);
+        ctx.lineTo(300, 250);
         ctx.stroke();
 
         // Upper diamond
         ctx.beginPath();
-        ctx.moveTo(200, 110); // Top point
-        ctx.lineTo(260, 140); // Right point
-        ctx.lineTo(200, 170); // Bottom point
-        ctx.lineTo(140, 140); // Left point
+        ctx.moveTo(250, 160); // Top point
+        ctx.lineTo(300, 185); // Right point
+        ctx.lineTo(250, 210); // Bottom point
+        ctx.lineTo(200, 185); // Left point
         ctx.closePath();
         ctx.stroke();
       }
 
       window.toggleDiamonds = function () {
-        __cubeShown = !__cubeShown;
+        __cubeShown = !__cubeShown; // <-- fix: toggle properly
         draw();
         return __cubeShown;
       };
@@ -90,3 +90,4 @@
     </script>
   </body>
 </html>
+
